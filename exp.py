@@ -11,7 +11,7 @@ loop = asyncio.get_event_loop()
 def test_example():
     conn = yield from aiomysql.connect(host='127.0.0.1', port=3306,
                                        user='root', password='pass', db='mysql',
-                                       loop=loop)
+                                       loop=loop, autocommit=True)
 
     cur = yield from conn.cursor()
     yield from cur.execute("SELECT Host,User FROM user")
